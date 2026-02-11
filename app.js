@@ -23,7 +23,7 @@ const cargarEstadisticas = () => {
         })
         .catch(error => {
             console.error('Error al cargar estadísticas:', error);
-            loading.textContent = '❌ Error al cargar estadísticas';
+            loading.textContent = ' Error al cargar estadísticas';
         });
 };
 
@@ -59,7 +59,7 @@ const cargarRepositorios = () => {
             loading.style.display = 'none';
             
             if (repos.length === 0) {
-                contenedorProyectos.innerHTML = '<p class="no-results">❌ No se encontraron repositorios</p>';
+                contenedorProyectos.innerHTML = '<p class="no-results"> No se encontraron repositorios</p>';
                 return;
             }
             
@@ -67,7 +67,7 @@ const cargarRepositorios = () => {
         })
         .catch(error => {
             console.error('Error al cargar repositorios:', error);
-            loading.textContent = '❌ Error al cargar proyectos';
+            loading.textContent = ' Error al cargar proyectos';
         });
 };
 
@@ -147,7 +147,7 @@ const cargarSeguidores = () => {
         })
         .catch(error => {
             console.error('Error al cargar seguidores:', error);
-            loading.textContent = '❌ Error';
+            loading.textContent = ' Error';
         });
 };
 
