@@ -1,0 +1,236 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f0e8;
+    color: #1a3a5c;
+    min-height: 100vh;
+}
+
+/* ─── HEADER ─── */
+header {
+    background-color: #1a3a5c;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: #f5f0e8;
+    font-size: 2rem;
+}
+
+/* ─── BARRA DE BÚSQUEDA  ─── */
+.navbar {
+    background-color: #2a5a8c ;
+    padding: 15px 20px;
+}
+
+.navbar .form-control {
+    border-radius: 25px;
+    padding: 8px 20px;
+    border: none;
+    max-width: 500px;
+}
+
+.navbar .btn-outline-success {
+    border-radius: 25px;
+    border-color: #28a745;
+    color: #fff;
+    background-color: #28a745;
+    padding: 8px 25px;
+    transition: background-color 0.3s;
+}
+
+.navbar .btn-outline-success:hover {
+    background-color: #1e7e34;
+    border-color: #1e7e34;
+}
+
+/* ─── CONTENEDOR DE PRODUCTOS ─── */
+.contenedor-productos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ─── TARJETAS DE PRODUCTO ─── */
+.card {
+    background-color: #fff;
+    border-radius: 12px;
+    width: 240px;
+    box-shadow: 0 4px 10px rgba(26, 58, 92, 0.15);
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(26, 58, 92, 0.3);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 15px;
+}
+
+.card-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #2a5a8c;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.card-title {
+    font-size: 1rem;
+    margin: 6px 0;
+    color: #1a3a5c;
+}
+
+.card-rating {
+    font-size: 0.85rem;
+    color: #2a5a8c;
+    margin: 4px 0;
+}
+
+.card-price {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1a3a5c;
+    margin-top: 6px;
+}
+
+/* ─── MENSAJE DE CARGA ─── */
+.loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #2a5a8c;
+    padding: 60px;
+    width: 100%;
+}
+
+/* ─── DETALLE DE PRODUCTO ─── */
+.detalle-contenedor {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.btn-regreso {
+    background-color: #2a5a8c;
+    color: #f5f0e8;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    transition: background-color 0.3s;
+}
+
+.btn-regreso:hover {
+    background-color: #1a3a5c;
+}
+
+.detalle-producto {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(26, 58, 92, 0.2);
+    overflow: hidden;
+    display: flex;
+    gap: 30px;
+}
+
+.detalle-img {
+    width: 350px;
+    min-height: 350px;
+    object-fit: cover;
+}
+
+.detalle-info {
+    padding: 30px 30px 30px 0;
+    flex: 1;
+}
+
+.detalle-category {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #2a5a8c;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.detalle-title {
+    font-size: 1.8rem;
+    color: #1a3a5c;
+    margin: 8px 0;
+}
+
+.detalle-brand {
+    color: #2a5a8c;
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+}
+
+.detalle-description {
+    color: #4a4a4a;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.detalle-price {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1a3a5c;
+    margin-bottom: 20px;
+}
+
+/* ─── OPINIONES ─── */
+.detalle-opiniones h3 {
+    color: #1a3a5c;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #2a5a8c;
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.opinion {
+    background-color: #f5f0e8;
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 10px;
+}
+
+.opinion-nombre {
+    font-weight: bold;
+    color: #1a3a5c;
+    font-size: 0.9rem;
+}
+
+.opinion-estrellas {
+    font-size: 0.85rem;
+    color: #2a5a8c;
+    margin: 3px 0;
+}
+
+.opinion-comentario {
+    font-size: 0.85rem;
+    color: #4a4a4a;
+}

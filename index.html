@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio - Alan Luna</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="header-text">
+                <h1>Portafolio</h1>
+                <h2>Alan Luna</h2>
+                <p>Desarrollador Web</p>
+            </div>
+
+            <div class="header-social">
+                <a href="https://github.com/A-20-fpsATF15" target="_blank" title="GitHub">
+                    <img src="imgporta/github.png" alt="github">
+                </a>
+                
+                <a href="https://www.instagram.com/alan24_luan/" target="_blank" title="Instagram">
+                    <img src="imgporta/instagram.png" alt="instagram">
+                </a>
+                
+                <a href="mailto:diazbralan2000@gmail.com" title="Enviar correo">
+                    <img src="imgporta/gmail.png" alt="gmail">
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- CONTENEDOR PRINCIPAL -->
+    <main class="main-container">
+        <!-- SECCIÓN DE PROYECTOS -->
+        <section class="projects-section">
+            <h2 class="section-title">🚀 Mis Mejores Proyectos</h2>
+            <p class="section-subtitle">Los 6 repositorios más recientes y actualizados</p>
+            
+            <div id="loading-repos" class="loading">⏳ Cargando proyectos...</div>
+            
+            <div id="projects-grid" class="projects-grid"></div>
+            
+            <div id="no-repos" class="no-results" style="display: none;">
+                ❌ No se encontraron repositorios
+            </div>
+        </section>
+
+        <!-- SIDEBAR CON SEGUIDORES -->
+        <aside class="sidebar">
+            <h3 class="sidebar-title">👥 Mi Comunidad</h3>
+            <p class="sidebar-subtitle">Primeros 5 seguidores en GitHub</p>
+            
+            <div id="loading-followers" class="loading-small">⏳ Cargando...</div>
+            
+            <div id="followers-list" class="followers-list"></div>
+        </aside>
+
+        <div class="github-stats" >
+            <div class="stats-container">
+            <div id="loading-stats" class="loading-small">⏳ Cargando estadísticas...</div>
+            <div id="stats-content" class="stats-content" style="display: none;">
+                <div class="stat-card">
+                    <div class="stat-icon">📂</div>
+                    <div class="stat-number" id="repos-count">0</div>
+                    <div class="stat-label">Repositorios</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-number" id="followers-count">0</div>
+                    <div class="stat-label">Seguidores</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">👤</div>
+                    <div class="stat-number" id="following-count">0</div>
+                    <div class="stat-label">Siguiendo</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-number" id="stars-count">0</div>
+                    <div class="stat-label">Estrellas</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Alan Luna - Todos los derechos reservados</p>
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

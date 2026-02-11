@@ -1,0 +1,280 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* Encabezado */
+h1 {
+    text-align: center;
+    color: #2d2d2d;
+    font-size: 2.8rem;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+h1::before {
+    content: "🔥 ";
+}
+
+h1::after {
+    content: " 🔥";
+}
+
+/* Subtítulo */
+.subtitle {
+    text-align: center;
+    color: #555;
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+}
+
+.subtitle::before {
+    content: "📱 ";
+}
+
+/* Botón principal */
+button {
+    display: block;
+    margin: 30px auto;
+    background: linear-gradient(135deg, #ff8c00 0%, #ff6b00 100%);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 140, 0, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #ff6b00 0%, #ff4500 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 140, 0, 0.4);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+/* Contenedor de productos */
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+/* Tarjeta de producto - Estilo similar a la imagen original */
+.practice-card {
+    background: linear-gradient(135deg, #ff9933 0%, #ff8c00 100%);
+    border: none;
+    border-radius: 20px;
+    padding: 25px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: #2d2d2d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.practice-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.practice-card:hover::before {
+    opacity: 1;
+}
+
+.practice-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 12px 30px rgba(255, 140, 0, 0.4);
+}
+
+/* Contenedor de imagen */
+.practice-card .image-container {
+    width: 100%;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.practice-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.practice-card:hover img {
+    transform: scale(1.05);
+}
+
+/* Título del producto */
+.practice-title {
+    color: #2d2d2d;
+    font-size: 1.3rem;
+    margin: 15px 0 10px 0;
+    font-weight: 700;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Descripción */
+.practice-description {
+    color: #3d3d3d;
+    font-size: 0.95rem;
+    margin: 10px 0;
+    text-align: center;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Detalles del producto */
+.practice-card p {
+    margin: 6px 0;
+    color: #2d2d2d;
+    font-size: 0.95rem;
+    text-align: center;
+    width: 100%;
+}
+
+.practice-card strong {
+    color: #1a1a1a;
+    font-weight: 700;
+}
+
+/* Badge de stock bajo */
+.stock-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #ff4444;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(255, 68, 68, 0.3);
+}
+
+/* Badge de categoría */
+.category-badge {
+    background: rgba(255, 255, 255, 0.9);
+    color: #ff6b00;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+/* Sección de precio destacada */
+.price-section {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px 20px;
+    border-radius: 15px;
+    margin-top: 15px;
+    width: 100%;
+    text-align: center;
+}
+
+.price-section .price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #ff4500;
+    margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    #contenedor-productos {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+        padding: 15px;
+    }
+    
+    .practice-card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    #contenedor-productos {
+        grid-template-columns: 1fr;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+    }
+}
+
+/* Loading animation */
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 1.5rem;
+    color: #ff8c00;
+    font-weight: 600;
+}
+
+.loading::after {
+    content: '...';
+    animation: dots 1.5s steps(4, end) infinite;
+}
+
+@keyframes dots {
+    0%, 20% { content: '.'; }
+    40% { content: '..'; }
+    60%, 100% { content: '...'; }
+}

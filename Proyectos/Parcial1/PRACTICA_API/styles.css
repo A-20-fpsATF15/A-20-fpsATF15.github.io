@@ -1,0 +1,35 @@
+/* Estilo base para la tarjeta del personaje */
+.practice-card {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px; /* Bordes redondeados */
+    padding: 2rem;
+    transition: all 0.3s ease; /* Suaviza la animación del hover */
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    margin: 10px; /* Separación entre tarjetas */
+    max-width: 300px; /* Ancho máximo para que no se estiren demasiado */
+    display: inline-block; /* Para que se pongan una al lado de otra */
+    vertical-align: top;
+}
+
+/* Efecto al pasar el mouse por encima */
+.practice-card:hover {
+    border-color: #2a2a2a;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transform: translateY(-5px); /* Pequeño movimiento hacia arriba */
+}
+
+.practice-title {
+    color: #e67e22; /* Color naranja estilo Dragon Ball */
+}
+
+#contenedor-personajes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
