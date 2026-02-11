@@ -1,6 +1,7 @@
+// Usuario de GitHub
 const GITHUB_USER = 'A-20-fpsATF15';
 
-// Cargar estadísticas del perfil
+// Función para cargar estadísticas del perfil
 const cargarEstadisticas = () => {
     const loading = document.getElementById('loading-stats');
     const statsContent = document.getElementById('stats-content');
@@ -8,6 +9,8 @@ const cargarEstadisticas = () => {
     fetch(`https://api.github.com/users/${GITHUB_USER}`)
         .then(res => res.json())
         .then(data => {
+            console.log('Datos del perfil recibidos:', data);
+            
             loading.style.display = 'none';
             statsContent.style.display = 'grid';
             
@@ -24,7 +27,7 @@ const cargarEstadisticas = () => {
         });
 };
 
-// Calcular total de estrellas en todos los repos
+// Función para calcular total de estrellas
 const calcularEstrellas = () => {
     fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`)
         .then(res => res.json())
@@ -38,55 +41,29 @@ const calcularEstrellas = () => {
         });
 };
 
-// Cargar repositorios (los 6 más recientes)
+// Función para cargar repositorios
 const cargarRepositorios = () => {
+    const contenedorProyectos = document.getElementById('projects-grid');
     const loading = document.getElementById('loading-repos');
-    const grid = document.getElementById('projects-grid');
-    const noRepos = document.getElementById('no-repos');
+    
+    loading.style.display = 'block';
+    contenedorProyectos.innerHTML = '';
     
     const url = `https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&direction=desc&per_page=6&type=owner`;
     
     fetch(url)
-        .then(res => res.json())
+        .then(respuesta => respuesta.json())
         .then(repos => {
+            console.log('Repositorios recibidos:', repos);
+            
             loading.style.display = 'none';
             
             if (repos.length === 0) {
-                noRepos.style.display = 'block';
+                contenedorProyectos.innerHTML = '<p class="no-results">❌ No se encontraron repositorios</p>';
                 return;
             }
             
-            repos.forEach(repo => {
-                const card = document.createElement('div');
-                card.className = 'project-card';
-                card.onclick = () => window.open(repo.html_url, '_blank');
-                
-                const languageColor = getLanguageColor(repo.language);
-                
-                card.innerHTML = `
-                    <div class="project-header">
-                        <span class="project-icon">📁</span>
-                        <a href="${repo.html_url}" target="_blank" class="project-name" onclick="event.stopPropagation()">
-                            ${repo.name}
-                        </a>
-                    </div>
-                    <p class="project-description">
-                        ${repo.description || 'Sin descripción disponible'}
-                    </p>
-                    <div class="project-footer">
-                        ${repo.language ? `
-                            <span class="language">
-                                <span class="language-dot" style="background-color: ${languageColor}"></span>
-                                ${repo.language}
-                            </span>
-                        ` : ''}
-                        <span>⭐ ${repo.stargazers_count}</span>
-                        <span>🔱 ${repo.forks_count}</span>
-                    </div>
-                `;
-                
-                grid.appendChild(card);
-            });
+            mostrarRepositorios(repos);
         })
         .catch(error => {
             console.error('Error al cargar repositorios:', error);
@@ -94,34 +71,79 @@ const cargarRepositorios = () => {
         });
 };
 
-// Cargar primeros 5 seguidores
+// Función para mostrar repositorios en el DOM
+const mostrarRepositorios = (repos) => {
+    const contenedorProyectos = document.getElementById('projects-grid');
+    contenedorProyectos.innerHTML = '';
+    
+    repos.forEach(repo => {
+        const tarjeta = document.createElement('div');
+        tarjeta.classList.add('project-card');
+        tarjeta.onclick = () => window.open(repo.html_url, '_blank');
+        
+        // Obtener color del lenguaje
+        const languageColor = obtenerColorLenguaje(repo.language);
+        
+        // Badge de estrellas si tiene más de 0
+        const starsBadge = repo.stargazers_count > 0 ? 
+            `<span class="stars-badge">⭐ ${repo.stargazers_count} estrellas</span>` : '';
+        
+        // Formatear fecha de última actualización
+        const fechaActualizacion = new Date(repo.updated_at).toLocaleDateString('es-MX', {
+            year: 'numeric',
+            month: 'short',
+            day: 'numeric'
+        });
+        
+        tarjeta.innerHTML = `
+            ${starsBadge}
+            <div class="project-header">
+                <span class="project-icon">📁</span>
+                <h3 class="project-title">${repo.name}</h3>
+            </div>
+            
+            <p class="project-description">${repo.description || 'Sin descripción disponible'}</p>
+            
+            <div class="project-meta">
+                ${repo.language ? `
+                    <span class="language-badge">
+                        <span class="language-dot" style="background-color: ${languageColor}"></span>
+                        ${repo.language}
+                    </span>
+                ` : ''}
+                
+                <span class="update-date">📅 ${fechaActualizacion}</span>
+            </div>
+            
+            <div class="project-stats">
+                <span class="stat-item">⭐ ${repo.stargazers_count}</span>
+                <span class="stat-item">🔱 ${repo.forks_count}</span>
+                <span class="stat-item">👁️ ${repo.watchers_count}</span>
+            </div>
+        `;
+        
+        contenedorProyectos.appendChild(tarjeta);
+    });
+};
+
+// Función para cargar seguidores
 const cargarSeguidores = () => {
     const loading = document.getElementById('loading-followers');
-    const list = document.getElementById('followers-list');
+    const lista = document.getElementById('followers-list');
     
     fetch(`https://api.github.com/users/${GITHUB_USER}/followers?per_page=5`)
-        .then(res => res.json())
-        .then(followers => {
+        .then(respuesta => respuesta.json())
+        .then(seguidores => {
+            console.log('Seguidores recibidos:', seguidores);
+            
             loading.style.display = 'none';
             
-            if (followers.length === 0) {
-                list.innerHTML = '<p style="color: #888;">Sin seguidores aún</p>';
+            if (seguidores.length === 0) {
+                lista.innerHTML = '<p style="color: #888;">Sin seguidores aún</p>';
                 return;
             }
             
-            followers.forEach(follower => {
-                const followerDiv = document.createElement('div');
-                followerDiv.className = 'follower';
-                
-                followerDiv.innerHTML = `
-                    <a href="${follower.html_url}" target="_blank">
-                        <img src="${follower.avatar_url}" alt="${follower.login}">
-                    </a>
-                    <span class="follower-tooltip">${follower.login}</span>
-                `;
-                
-                list.appendChild(followerDiv);
-            });
+            mostrarSeguidores(seguidores);
         })
         .catch(error => {
             console.error('Error al cargar seguidores:', error);
@@ -129,9 +151,29 @@ const cargarSeguidores = () => {
         });
 };
 
-// Colores para lenguajes de programación
-const getLanguageColor = (language) => {
-    const colors = {
+// Función para mostrar seguidores en el DOM
+const mostrarSeguidores = (seguidores) => {
+    const lista = document.getElementById('followers-list');
+    lista.innerHTML = '';
+    
+    seguidores.forEach(seguidor => {
+        const followerDiv = document.createElement('div');
+        followerDiv.classList.add('follower');
+        
+        followerDiv.innerHTML = `
+            <a href="${seguidor.html_url}" target="_blank">
+                <img src="${seguidor.avatar_url}" alt="${seguidor.login}">
+            </a>
+            <span class="follower-tooltip">${seguidor.login}</span>
+        `;
+        
+        lista.appendChild(followerDiv);
+    });
+};
+
+// Función para obtener colores de lenguajes de programación
+const obtenerColorLenguaje = (lenguaje) => {
+    const colores = {
         'JavaScript': '#f1e05a',
         'Python': '#3572A5',
         'Java': '#b07219',
@@ -148,11 +190,12 @@ const getLanguageColor = (language) => {
         'Rust': '#dea584'
     };
     
-    return colors[language] || '#888';
+    return colores[lenguaje] || '#888';
 };
 
 // Iniciar cuando carga la página
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('Iniciando carga de datos...');
     cargarEstadisticas();
     cargarRepositorios();
     cargarSeguidores();
