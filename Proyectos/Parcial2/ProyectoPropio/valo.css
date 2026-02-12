@@ -1,0 +1,208 @@
+/* ====== RESET Y BASES ====== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0f1923; /* Oscuro Valorant */
+    color: #ece8e1;
+    overflow-x: hidden;
+}
+
+/* ====== HEADER (Estilo Riot) ====== */
+.header-valo {
+    background: linear-gradient(135deg, #ff4655 0%, #bd3944 100%);
+    padding: 20px 0;
+    box-shadow: 0 4px 20px rgba(255, 70, 85, 0.4);
+    text-align: center;
+}
+
+.title-valo {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+}
+
+/* ====== CAROUSEL PRINCIPAL (Agentes Aleatorios) ====== */
+.carousel-section {
+    background: #0b1219;
+    border-bottom: 2px solid #ff4655;
+}
+
+.carousel-item {
+    height: 450px;
+}
+
+.carousel-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 10%;
+    gap: 50px;
+}
+
+.carousel-agent-img {
+    height: 110%; /* Sobresale un poco para dar profundidad */
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 70, 85, 0.5));
+}
+
+/* ====== SECCIÓN ESTANDARTES (Grid de Agentes) ====== */
+.estandartes-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 40px 0;
+}
+
+.estandarte-card {
+    position: relative;
+    width: 220px;
+    height: 380px; /* Tamaño base */
+    background: #1a2332;
+    /* Forma de casa invertida (Estandarte) */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 88%, 50% 100%, 0% 88%);
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    cursor: pointer;
+    overflow: hidden;
+    border-top: 4px solid #ff4655; /* Se cambia por JS según el rol */
+}
+
+/* Efecto al pasar el cursor (Se expande y brilla) */
+.estandarte-card:hover {
+    height: 480px; 
+    transform: translateY(-10px);
+    background: #242e3e;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.estandarte-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: top;
+    transition: transform 0.4s ease;
+}
+
+.estandarte-card:hover .estandarte-img {
+    transform: scale(1.1);
+}
+
+.estandarte-info {
+    padding: 15px;
+    text-align: center;
+}
+
+.estandarte-info h4 {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+/* Detalles que aparecen solo en Hover */
+.detalle-oculto {
+    opacity: 0;
+    max-height: 0;
+    transition: all 0.4s ease;
+    font-size: 0.85rem;
+    color: #9ea4a9;
+}
+
+.estandarte-card:hover .detalle-oculto {
+    opacity: 1;
+    max-height: 100px;
+    margin-top: 10px;
+}
+
+/* ====== SECCIÓN DE SKINS (Pila con Zoom) ====== */
+.skins-pila-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skin-item {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(83, 179, 203, 0.1) 0%, rgba(15, 25, 35, 0) 100%);
+    border-left: 4px solid #53b3cb;
+    margin-bottom: 25px;
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
+    transition: 0.3s;
+}
+
+.skin-item:hover {
+    background: linear-gradient(900deg, rgba(83, 179, 203, 0.2) 0%, rgba(15, 25, 35, 0.1) 100%);
+    transform: translateX(20px);
+}
+
+.skin-img-container {
+    flex: 1;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+.skin-img-container img {
+    width: 100%;
+    max-width: 350px;
+    object-fit: contain;
+    transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* Zoom potente a la skin */
+.skin-item:hover img {
+    transform: scale(1.0) rotate(-2deg);
+}
+
+.skin-texto {
+    flex: 1;
+    padding-left: 40px;
+}
+
+.skin-texto h3 {
+    color: #53b3cb;
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.skin-texto p {
+    color: #ece8e1;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+/* ====== FOOTER ====== */
+.footer-valo {
+    padding: 40px 0;
+    background: #0b1219;
+    border-top: 1px solid rgba(236, 232, 225, 0.1);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .skin-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .skin-texto {
+        padding-left: 0;
+        margin-top: 20px;
+    }
+    .carousel-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .carousel-agent-img {
+        height: 200px;
+    }
+}
