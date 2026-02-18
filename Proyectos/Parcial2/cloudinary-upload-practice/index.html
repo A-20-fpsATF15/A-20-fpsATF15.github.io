@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subir Imagen a Cloudinary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1>Subir Imagen a Cloudinary</h1>
+        
+        <!-- area de seleccion de archivo -->
+        <div class="upload-area">
+            <input type="file" id="fileInput" accept="image/*">
+            <label for="fileInput" class="file-label">Seleccionar Imagen</label>
+        </div>
+
+        <!-- prevista de la imagen antes de subirla -->
+        <div id="preview" class="preview"></div>
+
+        <!-- boton de subir -->
+        <button id="uploadBtn" class="upload-btn" disabled>Subir a Cloudinary</button>
+
+        <!-- indicador de carga -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Subiendo imagen...</p>
+        </div>
+
+        <!-- mensaje de error -->
+        <div id="error" class="error hidden"></div>
+
+        <!-- imagen subida exitosamente -->
+        <div id="result" class="result hidden">
+            <h3>¡Imagen subida exitosamente!</h3>
+            <img id="uploadedImage" src="" alt="Imagen subida">
+            <p>URL: <a id="imageUrl" href="" target="_blank"></a></p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
