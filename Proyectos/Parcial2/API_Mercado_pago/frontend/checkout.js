@@ -6,7 +6,7 @@
 const MP_PUBLIC_KEY = 'APP_USR-f1d39f02-0a62-42f6-a453-9253099a4de9';
 
 // ⚠️ URL de tu backend
-const BACKEND_URL = 'http://localhost:3000';
+const BACKEND_URL = 'https://a-20-fps-atf-15-github-io.vercel.app';
 
 // ── LEER DATOS DEL PRODUCTO DESDE LA URL ─────
 // Ejemplo: checkout.html?nombre=Coca+Cola&precio=20&descripcion=Refresco
