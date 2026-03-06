@@ -1,15 +1,1 @@
-{
-  "version": 2,
-  "builds": [
-    {
-        "src": "Proyectos/Parcial2/API_Mercado_pago/Backend/src/app.js",
-        "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-        "src": "/api/(.*)",
-        "dest": "Proyectos/Parcial2/API_Mercado_pago/Backend/src/app.js"
-    }
-  ]
-}
+{"version":2,"builds":[{"src":"Proyectos/Parcial2/API_Mercado_pago/Backend/src/app.js","use":"@vercel/node"}],"routes":[{"src":"/api/(.*)","dest":"Proyectos/Parcial2/API_Mercado_pago/Backend/src/app.js"}]}
